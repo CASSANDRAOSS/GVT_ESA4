@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Drei parametrisierte Flächen als kleine Unterwasserwelt mit WebGL."
+    >
+
+    <title>Parametrisierte Flächen – Unterwasserwelt</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <a class="sprunglink" href="#hauptinhalt">
+        Direkt zum Inhalt
+    </a>
+
+    <header class="seitenkopf">
+        <div class="kopfbereich">
+
+            <div>
+                <p class="aufgabenbezeichnung">
+                    Einsendeaufgabe 4
+                </p>
+
+                <h1>Parametrisierte Flächen</h1>
+
+                <p class="einleitung">
+                    Eine kleine Unterwasserwelt aus mathematischen
+                    Flächen: eine Muschel, eine Koralle und meine
+                    eigene Qualle.
+                </p>
+            </div>
+
+            <img
+                class="profilbild"
+                src="bilder/ich2.png"
+                alt="Comicfigur von Cassandra Ludwig, die winkt"
+                width="174"
+                height="340"
+            >
+
+        </div>
+    </header>
+
+    <main id="hauptinhalt">
+
+        <section
+            class="darstellungsbereich"
+            aria-labelledby="flaechenTitel"
+        >
+
+            <div class="abschnittskopf">
+                <p class="aufgabenbezeichnung">
+                    Drei Flächen, ein Thema
+                </p>
+
+                <h2 id="flaechenTitel">
+                    Meine Unterwasserwelt
+                </h2>
+
+                <p>
+                    Jede Form wird aus zwei Parametern berechnet.
+                    Die Farbflächen und ihre Linien können
+                    gemeinsam betrachtet werden.
+                </p>
+            </div>
+
+            <div class="steuerung">
+                <button
+                    id="linienButton"
+                    type="button"
+                    aria-pressed="true"
+                >
+                    Linien ausblenden
+                </button>
+
+                <button
+                    id="ansichtButton"
+                    type="button"
+                    aria-pressed="false"
+                >
+                    Nur Linien zeigen
+                </button>
+
+                <p>
+                    Mit <kbd>B</kbd> schaltest du die Hilfslinien um.
+                    Mit „Nur Linien zeigen“ siehst du die Flächen
+                    ohne Füllung.
+                </p>
+            </div>
+
+            <div class="flaechenraster">
+
+                <article class="flaechenkarte">
+                    <div class="kartenkopf">
+                        <p class="kartenkategorie">
+                            Recherchierte Fläche · 01
+                        </p>
+
+                        <h3>Die Muschel</h3>
+
+                        <p>
+                            Eine spiralförmige Fläche, die zum
+                            Meeresboden meiner Szene passt.
+                        </p>
+                    </div>
+
+                    <div class="canvasrahmen">
+                        <canvas
+                            id="muschelCanvas"
+                            width="500"
+                            height="500"
+                            aria-label="Parametrisierte Muschel mit Farbflächen und Linien"
+                        >
+                            Dein Browser unterstützt das
+                            Canvas-Element leider nicht.
+                        </canvas>
+                    </div>
+
+                    <p class="kartenhinweis">
+                        Mathematischer Name: Seashell.
+                    </p>
+                </article>
+
+                <article class="flaechenkarte">
+                    <div class="kartenkopf">
+                        <p class="kartenkategorie">
+                            Recherchierte Fläche · 02
+                        </p>
+
+                        <h3>Die Koralle</h3>
+
+                        <p>
+                            Die Enneper-Fläche erhält durch Farbe
+                            und Anordnung ihren Platz in meiner
+                            Unterwasserwelt.
+                        </p>
+                    </div>
+
+                    <div class="canvasrahmen">
+                        <canvas
+                            id="koralleCanvas"
+                            width="500"
+                            height="500"
+                            aria-label="Enneper-Fläche als farbig gestaltete Koralle mit Linien"
+                        >
+                            Dein Browser unterstützt das
+                            Canvas-Element leider nicht.
+                        </canvas>
+                    </div>
+
+                    <p class="kartenhinweis">
+                        Mathematischer Name: Enneper-Fläche.
+                    </p>
+                </article>
+
+                <article class="flaechenkarte eigene-flaeche">
+                    <div class="kartenkopf">
+                        <p class="kartenkategorie">
+                            Eigene Parametrisierung · 03
+                        </p>
+
+                        <h3>Meine Qualle</h3>
+
+                        <p>
+                            Für den gewölbten Schirm und seinen
+                            welligen Rand entwickle ich eine
+                            eigene Formel.
+                        </p>
+                    </div>
+
+                    <div class="canvasrahmen">
+                        <canvas
+                            id="qualleCanvas"
+                            width="500"
+                            height="500"
+                            aria-label="Selbst parametrisierter Quallenschirm mit Farbflächen und Linien"
+                        >
+                            Dein Browser unterstützt das
+                            Canvas-Element leider nicht.
+                        </canvas>
+                    </div>
+
+                    <p class="kartenhinweis">
+                        Eigene Kreation für diese Aufgabe.
+                    </p>
+                </article>
+
+            </div>
+
+            <p
+                id="webglStatus"
+                class="statusanzeige"
+                role="status"
+                aria-live="polite"
+            >
+                WebGL wird vorbereitet …
+            </p>
+
+        </section>
+
+        <section
+            class="dokumentation"
+            aria-labelledby="dokumentationTitel"
+        >
+
+            <div class="abschnittskopf">
+                <p class="aufgabenbezeichnung">
+                    Informationen zur Umsetzung
+                </p>
+
+                <h2 id="dokumentationTitel">
+                    Dokumentation
+                </h2>
+            </div>
+
+            <div class="dokumentationsraster">
+
+                <article class="dokumentationskarte">
+                    <h3>Idee und Gestaltung</h3>
+
+                    <p>
+                        Die Flächen habe ich passend zu einer
+                        Unterwasserwelt ausgewählt. Die Muschel
+                        gehört direkt zu diesem Thema. Die
+                        Enneper-Fläche gestalte ich farblich als
+                        Koralle. Als eigene Form kommt eine
+                        Qualle hinzu.
+                    </p>
+
+                    <p>
+                        Mir war wichtig, dass die drei Flächen
+                        zusammenpassen und trotzdem jeweils
+                        eine andere Form zeigen.
+                    </p>
+                </article>
+
+                <article class="dokumentationskarte">
+                    <h3>Technische Umsetzung</h3>
+
+                    <p>
+                        Für jede der drei Flächen berechnet
+                        JavaScript Punkte aus zwei Parametern.
+                        Aus benachbarten Punkten entstehen
+                        Dreiecke, die WebGL farbig darstellt.
+                        Die Farben an den Punkten gehen auf
+                        den Flächen ineinander über.
+                    </p>
+
+                    <p>
+                        Zusätzlich werden die Verbindungen
+                        zwischen den Punkten als Linien
+                        gezeichnet. Mit „Nur Linien zeigen“
+                        kann ich die Farbflächen ausblenden
+                        und mir den Aufbau der Formen genauer
+                        ansehen. Die Taste <kbd>B</kbd>
+                        schaltet die Linien über den
+                        Farbflächen ein und aus.
+                    </p>
+
+                    <p>
+                        Die berechneten Koordinaten werden
+                        mittig angeordnet und so skaliert,
+                        dass jede Fläche vollständig im
+                        sichtbaren Bereich liegt.
+                    </p>
+                </article>
+
+                <article class="dokumentationskarte">
+                    <h3>Eigene Formel und Bedienung</h3>
+
+                    <p>
+                        Für meine dritte Fläche wollte ich eine
+                        Qualle gestalten. Ihr Schirm sollte oben
+                        rund sein und am Rand nicht ganz
+                        gleichmäßig aussehen. Deshalb habe ich
+                        die Form aus einem gewölbten Schirm und
+                        zusätzlichen Wellen zusammengesetzt.
+                    </p>
+
+                    <p>
+                        Dafür verwende ich zwei Werte:
+                        <code>u</code> läuft als Winkel einmal um
+                        die Qualle herum (0 bis 2π).
+                        <code>v</code> läuft von der Mitte nach
+                        außen (0 bis 1). Meine Formel lautet:
+                        <code>
+                            r = v · (1 + 0,16 · v² · cos(12u + 2v))
+                        </code>,
+                        <code>x = r · cos(u)</code>,
+                        <code>y = r · sin(u)</code> und
+                        <code>
+                            z = 0,8 · (1 − v²)
+                            + 0,12 · v³ · sin(15u + 3v)
+                        </code>.
+                    </p>
+
+                    <p>
+                        Beim Ausprobieren konnte ich sehen,
+                        wie sich die zusätzlichen Terme auf
+                        den Rand auswirken. Mit dem Button
+                        oder der Taste <kbd>B</kbd> kann man
+                        die Hilfslinien ein- und ausblenden
+                        und sich den Aufbau der Fläche
+                        genauer ansehen.
+                    </p>
+                </article>
+
+                <article class="dokumentationskarte">
+                    <h3>Quellen und Prüfung</h3>
+
+                    <p>
+                        Die Formel für die
+                        <a href="https://mathworld.wolfram.com/Seashell.html">
+                            Muschel
+                        </a>
+                        und die Formel für die
+                        <a href="https://mathworld.wolfram.com/EnnepersMinimalSurface.html">
+                            Enneper-Fläche
+                        </a>
+                        stammen von Wolfram MathWorld.
+                        Die zweite Fläche habe ich für
+                        meine Unterwasserwelt farblich
+                        als Koralle gestaltet.
+                    </p>
+
+                    <p>
+                        Die Darstellung und die beiden
+                        Ansichten habe ich im Browser
+                        ausprobiert. Vor der Abgabe habe
+                        ich außerdem die Entwicklerkonsole
+                        auf Fehlermeldungen geprüft. Meine
+                        Screenshots der Zwischenschritte
+                        stehen unter der Dokumentation.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <section
+            class="entstehung"
+            aria-labelledby="entstehungTitel"
+        >
+
+            <div class="abschnittskopf">
+                <p class="aufgabenbezeichnung">
+                    Entstehungsprozess
+                </p>
+
+                <h2 id="entstehungTitel">
+                    Schritt für Schritt zur Unterwasserwelt
+                </h2>
+
+                <p>
+                    Hier zeige ich anhand eigener Screenshots,
+                    wie die drei Flächen entstanden sind.
+                </p>
+            </div>
+
+            <div class="slideshow">
+
+                <img
+                    id="schrittBild"
+                    src="fortschritt/schritt_01.png"
+                    alt="Erster Entwicklungsschritt der Unterwasserwelt"
+                >
+
+                <p
+                    id="schrittZaehler"
+                    class="schrittzaehler"
+                    aria-live="polite"
+                >
+                    Bild 1
+                </p>
+
+                <p
+                    id="schrittBeschreibung"
+                    class="schrittbeschreibung"
+                >
+                    Der erste Entwicklungsschritt.
+                </p>
+
+                <div
+                    id="schrittPunkte"
+                    class="schrittpunkte"
+                    aria-label="Bilder der Slideshow auswählen"
+                ></div>
+
+                <div class="slideshow-steuerung">
+                    <button
+                        id="zurueckButton"
+                        type="button"
+                    >
+                        Zurück
+                    </button>
+
+                    <button
+                        id="weiterButton"
+                        type="button"
+                    >
+                        Weiter
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="seitenfuss">
+        <p>EA 4 · Parametrisierte Flächen</p>
+        <p>Erstellt von Cassandra Ludwig</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
