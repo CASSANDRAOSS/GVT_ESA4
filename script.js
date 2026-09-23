@@ -1,3 +1,5 @@
+// START AUFGABE_4_PARAMETRISCHE_FLAECHEN
+
 // ------------------------------------------------------------
 // 1. Elemente aus der HTML-Seite holen
 // ------------------------------------------------------------
@@ -15,6 +17,8 @@ const zeichnungen = [];
 // ------------------------------------------------------------
 // 2. Die drei mathematischen Flächen
 // ------------------------------------------------------------
+
+// START AUFGABE_4_ZWEI_RECHERCHIERTE_FLAECHEN
 
 // Quelle: https://mathworld.wolfram.com/Seashell.html
 function muschel(u, v) {
@@ -40,6 +44,9 @@ function koralle(u, v) {
     ];
 }
 
+// END AUFGABE_4_ZWEI_RECHERCHIERTE_FLAECHEN
+
+// START AUFGABE_4_EIGENE_PARAMETRISIERUNG_QUALLE
 
 // Eigene Formel für den Schirm der Qualle.
 // u läuft einmal um die Qualle herum.
@@ -58,6 +65,7 @@ function qualle(u, v) {
     return [x, y, z];
 }
 
+// END AUFGABE_4_EIGENE_PARAMETRISIERUNG_QUALLE
 
 // ------------------------------------------------------------
 // 3. Farben für die einzelnen Flächen
@@ -491,6 +499,8 @@ function alleFlaechenZeichnen() {
 // 8. Buttons und Taste B
 // ------------------------------------------------------------
 
+// START AUFGABE_4_LINIEN_UND_FARBFLAECHEN_UMSCHALTEN
+
 function linienUmschalten() {
     linienSichtbar = !linienSichtbar;
 
@@ -535,11 +545,13 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+// END AUFGABE_4_LINIEN_UND_FARBFLAECHEN_UMSCHALTEN
 
 // ------------------------------------------------------------
 // 9. Slideshow mit Fortschrittsbildern
 // ------------------------------------------------------------
 
+// START EIGENE_ERWEITERUNG_SLIDESHOW
 const fortschrittsbilder = [
     {
         datei: "fortschritt/schritt_01.png",
@@ -665,6 +677,7 @@ if (slideshow && fortschrittsbilder.length > 0) {
     });
 }
 
+// END EIGENE_ERWEITERUNG_SLIDESHOW
 
 // ------------------------------------------------------------
 // 10. Alle drei Flächen starten
@@ -725,3 +738,5 @@ try {
         "Die Flächen konnten nicht dargestellt werden. "
         + "Bitte prüfe die Entwicklerkonsole.";
 }
+
+// END AUFGABE_4_PARAMETRISCHE_FLAECHEN
